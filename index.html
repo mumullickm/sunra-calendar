@@ -1,0 +1,1363 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sunra Content Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&family=Fraunces:ital,opsz,wght@1,72,400;1,72,600&display=swap');
+
+* { box-sizing:border-box; margin:0; }
+body { background:#1A1F17; color:#F3EFE2; font-family:'Urbanist',sans-serif; }
+header { text-align:center; padding:56px 20px 28px; }
+header h1 { font-family:'Fraunces',serif; font-style:italic; font-weight:600;
+  color:#FAC000; font-size:40px; }
+header p { opacity:.75; margin-top:10px; max-width:760px; margin-left:auto; margin-right:auto; }
+h2 { font-family:'Fraunces',serif; font-style:italic; color:#FAC000;
+  font-size:28px; margin:36px 24px 6px; }
+.bar { margin:10px 24px 4px; display:flex; gap:8px; flex-wrap:wrap; }
+.f { background:none; border:1px solid rgba(250,192,0,.5); color:#FAC000;
+  border-radius:16px; padding:5px 14px; cursor:pointer; font-family:inherit; }
+.f:hover { background:rgba(250,192,0,.15); }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px; padding:18px 24px 56px; }
+.card { background:#242B20; border-radius:14px; overflow:hidden;
+  border:1px solid rgba(250,192,0,.18); }
+.card img, .card video { width:100%; display:block; aspect-ratio:4/5;
+  object-fit:cover; background:#161A13; }
+.meta { display:flex; align-items:center; gap:10px; padding:12px 14px 4px; }
+.chip { background:rgba(250,192,0,.16); color:#FAC000; font-size:12px;
+  padding:3px 10px; border-radius:12px; letter-spacing:.08em; }
+.id { opacity:.7; font-size:13px; flex:1; }
+.copy { background:#FAC000; color:#1A1F17; border:none; border-radius:10px;
+  padding:7px 12px; font-weight:700; cursor:pointer; font-family:inherit; }
+.copy:active { transform:scale(.96); }
+.cap { white-space:pre-wrap; font-family:inherit; font-size:13.5px;
+  line-height:1.55; opacity:.88; padding:10px 14px 16px; }
+footer { text-align:center; opacity:.55; padding:30px; font-size:13px; }
+.whenrow { padding:8px 14px 0; display:flex; gap:8px; flex-wrap:wrap;
+  align-items:center; }
+.when { display:inline-block; background:rgba(250,192,0,.1); color:#FAC000;
+  font-size:12.5px; padding:4px 10px; border-radius:10px; }
+.st { display:inline-block; font-size:12px; font-weight:700;
+  padding:4px 10px; border-radius:10px; letter-spacing:.04em;
+  background:rgba(245,190,80,.18); color:#F5BE50;
+  border:1px solid rgba(245,190,80,.5); }
+.st.green { background:rgba(82,96,80,.35); color:#9FD98C;
+  border-color:rgba(159,217,140,.6); }
+.st.red { background:rgba(240,90,100,.16); color:#F58A93;
+  border-color:rgba(240,90,100,.55); }
+.counts { display:flex; gap:10px; justify-content:center; margin-top:14px;
+  flex-wrap:wrap; }
+.counts span { font-size:13px; padding:5px 12px; border-radius:12px; }
+.counts .cg { background:rgba(82,96,80,.35); color:#9FD98C; }
+.counts .cy { background:rgba(245,190,80,.18); color:#F5BE50; }
+.counts .cr { background:rgba(240,90,100,.16); color:#F58A93; }
+.post { background:none; border:1px solid rgba(250,192,0,.5); color:#FAC000;
+  border-radius:10px; padding:6px 10px; cursor:pointer; font-family:inherit;
+  font-size:12px; }
+.card.done { border-color:#9FD98C; }
+.card.done .post { background:#9FD98C; border-color:#9FD98C; color:#1A1F17;
+  font-weight:700; }
+.tblwrap { overflow-x:auto; margin:12px 24px 8px; }
+table { border-collapse:collapse; width:100%; font-size:13.5px; }
+th, td { text-align:left; padding:7px 12px;
+  border-bottom:1px solid rgba(250,192,0,.14); white-space:nowrap; }
+th { color:#FAC000; font-weight:600; }
+td a { color:#FAC000; }
+
+</style></head><body>
+<header><h1>Sunra &middot; Content Studio</h1>
+<p>90 statics + 30 reels &middot; 4:5. Amalfi and F3, real specs from sunraevbd.com.
+30-day run starts Mon 13 Jul 2026: Amalfi 08:00 BD, Amalfi 13:00 BD, F3 19:00 BD, reel 21:00 BD daily.
+Manual posting for now &mdash; toggle &quot;Posted?&quot; on each card as you publish it. No autopost wired up yet.</p>
+<div class="counts"><span class="cg" id="c-green">0 posted</span>
+<span class="cy" id="c-yellow">0 scheduled</span>
+<span class="cr" id="c-red">0 due</span></div></header>
+<h2>Schedule · 30 days</h2><div class="tblwrap"><table><tr><th></th><th>Date</th><th>Amalfi (08:00 BD)</th><th>Amalfi (13:00 BD)</th><th>F3 (19:00 BD)</th><th>Reel (21:00 BD)</th></tr><tr><td>Day 01</td><td>Mon 13 Jul</td><td><a href="#d01-amalfi1" onclick="jump('d01-amalfi1')">d01-amalfi1</a> · 08:00</td><td><a href="#d01-amalfi2" onclick="jump('d01-amalfi2')">d01-amalfi2</a> · 13:00</td><td><a href="#d01-f3" onclick="jump('d01-f3')">d01-f3</a> · 19:00</td><td><a href="#d01-reel" onclick="jump('d01-reel')">d01-reel</a> · 21:00</td></tr><tr><td>Day 02</td><td>Tue 14 Jul</td><td><a href="#d02-amalfi1" onclick="jump('d02-amalfi1')">d02-amalfi1</a> · 08:00</td><td><a href="#d02-amalfi2" onclick="jump('d02-amalfi2')">d02-amalfi2</a> · 13:00</td><td><a href="#d02-f3" onclick="jump('d02-f3')">d02-f3</a> · 19:00</td><td><a href="#d02-reel" onclick="jump('d02-reel')">d02-reel</a> · 21:00</td></tr><tr><td>Day 03</td><td>Wed 15 Jul</td><td><a href="#d03-amalfi1" onclick="jump('d03-amalfi1')">d03-amalfi1</a> · 08:00</td><td><a href="#d03-amalfi2" onclick="jump('d03-amalfi2')">d03-amalfi2</a> · 13:00</td><td><a href="#d03-f3" onclick="jump('d03-f3')">d03-f3</a> · 19:00</td><td><a href="#d03-reel" onclick="jump('d03-reel')">d03-reel</a> · 21:00</td></tr><tr><td>Day 04</td><td>Thu 16 Jul</td><td><a href="#d04-amalfi1" onclick="jump('d04-amalfi1')">d04-amalfi1</a> · 08:00</td><td><a href="#d04-amalfi2" onclick="jump('d04-amalfi2')">d04-amalfi2</a> · 13:00</td><td><a href="#d04-f3" onclick="jump('d04-f3')">d04-f3</a> · 19:00</td><td><a href="#d04-reel" onclick="jump('d04-reel')">d04-reel</a> · 21:00</td></tr><tr><td>Day 05</td><td>Fri 17 Jul</td><td><a href="#d05-amalfi1" onclick="jump('d05-amalfi1')">d05-amalfi1</a> · 08:00</td><td><a href="#d05-amalfi2" onclick="jump('d05-amalfi2')">d05-amalfi2</a> · 13:00</td><td><a href="#d05-f3" onclick="jump('d05-f3')">d05-f3</a> · 19:00</td><td><a href="#d05-reel" onclick="jump('d05-reel')">d05-reel</a> · 21:00</td></tr><tr><td>Day 06</td><td>Sat 18 Jul</td><td><a href="#d06-amalfi1" onclick="jump('d06-amalfi1')">d06-amalfi1</a> · 08:00</td><td><a href="#d06-amalfi2" onclick="jump('d06-amalfi2')">d06-amalfi2</a> · 13:00</td><td><a href="#d06-f3" onclick="jump('d06-f3')">d06-f3</a> · 19:00</td><td><a href="#d06-reel" onclick="jump('d06-reel')">d06-reel</a> · 21:00</td></tr><tr><td>Day 07</td><td>Sun 19 Jul</td><td><a href="#d07-amalfi1" onclick="jump('d07-amalfi1')">d07-amalfi1</a> · 08:00</td><td><a href="#d07-amalfi2" onclick="jump('d07-amalfi2')">d07-amalfi2</a> · 13:00</td><td><a href="#d07-f3" onclick="jump('d07-f3')">d07-f3</a> · 19:00</td><td><a href="#d07-reel" onclick="jump('d07-reel')">d07-reel</a> · 21:00</td></tr><tr><td>Day 08</td><td>Mon 20 Jul</td><td><a href="#d08-amalfi1" onclick="jump('d08-amalfi1')">d08-amalfi1</a> · 08:00</td><td><a href="#d08-amalfi2" onclick="jump('d08-amalfi2')">d08-amalfi2</a> · 13:00</td><td><a href="#d08-f3" onclick="jump('d08-f3')">d08-f3</a> · 19:00</td><td><a href="#d08-reel" onclick="jump('d08-reel')">d08-reel</a> · 21:00</td></tr><tr><td>Day 09</td><td>Tue 21 Jul</td><td><a href="#d09-amalfi1" onclick="jump('d09-amalfi1')">d09-amalfi1</a> · 08:00</td><td><a href="#d09-amalfi2" onclick="jump('d09-amalfi2')">d09-amalfi2</a> · 13:00</td><td><a href="#d09-f3" onclick="jump('d09-f3')">d09-f3</a> · 19:00</td><td><a href="#d09-reel" onclick="jump('d09-reel')">d09-reel</a> · 21:00</td></tr><tr><td>Day 10</td><td>Wed 22 Jul</td><td><a href="#d10-amalfi1" onclick="jump('d10-amalfi1')">d10-amalfi1</a> · 08:00</td><td><a href="#d10-amalfi2" onclick="jump('d10-amalfi2')">d10-amalfi2</a> · 13:00</td><td><a href="#d10-f3" onclick="jump('d10-f3')">d10-f3</a> · 19:00</td><td><a href="#d10-reel" onclick="jump('d10-reel')">d10-reel</a> · 21:00</td></tr><tr><td>Day 11</td><td>Thu 23 Jul</td><td><a href="#d11-amalfi1" onclick="jump('d11-amalfi1')">d11-amalfi1</a> · 08:00</td><td><a href="#d11-amalfi2" onclick="jump('d11-amalfi2')">d11-amalfi2</a> · 13:00</td><td><a href="#d11-f3" onclick="jump('d11-f3')">d11-f3</a> · 19:00</td><td><a href="#d11-reel" onclick="jump('d11-reel')">d11-reel</a> · 21:00</td></tr><tr><td>Day 12</td><td>Fri 24 Jul</td><td><a href="#d12-amalfi1" onclick="jump('d12-amalfi1')">d12-amalfi1</a> · 08:00</td><td><a href="#d12-amalfi2" onclick="jump('d12-amalfi2')">d12-amalfi2</a> · 13:00</td><td><a href="#d12-f3" onclick="jump('d12-f3')">d12-f3</a> · 19:00</td><td><a href="#d12-reel" onclick="jump('d12-reel')">d12-reel</a> · 21:00</td></tr><tr><td>Day 13</td><td>Sat 25 Jul</td><td><a href="#d13-amalfi1" onclick="jump('d13-amalfi1')">d13-amalfi1</a> · 08:00</td><td><a href="#d13-amalfi2" onclick="jump('d13-amalfi2')">d13-amalfi2</a> · 13:00</td><td><a href="#d13-f3" onclick="jump('d13-f3')">d13-f3</a> · 19:00</td><td><a href="#d13-reel" onclick="jump('d13-reel')">d13-reel</a> · 21:00</td></tr><tr><td>Day 14</td><td>Sun 26 Jul</td><td><a href="#d14-amalfi1" onclick="jump('d14-amalfi1')">d14-amalfi1</a> · 08:00</td><td><a href="#d14-amalfi2" onclick="jump('d14-amalfi2')">d14-amalfi2</a> · 13:00</td><td><a href="#d14-f3" onclick="jump('d14-f3')">d14-f3</a> · 19:00</td><td><a href="#d14-reel" onclick="jump('d14-reel')">d14-reel</a> · 21:00</td></tr><tr><td>Day 15</td><td>Mon 27 Jul</td><td><a href="#d15-amalfi1" onclick="jump('d15-amalfi1')">d15-amalfi1</a> · 08:00</td><td><a href="#d15-amalfi2" onclick="jump('d15-amalfi2')">d15-amalfi2</a> · 13:00</td><td><a href="#d15-f3" onclick="jump('d15-f3')">d15-f3</a> · 19:00</td><td><a href="#d15-reel" onclick="jump('d15-reel')">d15-reel</a> · 21:00</td></tr><tr><td>Day 16</td><td>Tue 28 Jul</td><td><a href="#d16-amalfi1" onclick="jump('d16-amalfi1')">d16-amalfi1</a> · 08:00</td><td><a href="#d16-amalfi2" onclick="jump('d16-amalfi2')">d16-amalfi2</a> · 13:00</td><td><a href="#d16-f3" onclick="jump('d16-f3')">d16-f3</a> · 19:00</td><td><a href="#d16-reel" onclick="jump('d16-reel')">d16-reel</a> · 21:00</td></tr><tr><td>Day 17</td><td>Wed 29 Jul</td><td><a href="#d17-amalfi1" onclick="jump('d17-amalfi1')">d17-amalfi1</a> · 08:00</td><td><a href="#d17-amalfi2" onclick="jump('d17-amalfi2')">d17-amalfi2</a> · 13:00</td><td><a href="#d17-f3" onclick="jump('d17-f3')">d17-f3</a> · 19:00</td><td><a href="#d17-reel" onclick="jump('d17-reel')">d17-reel</a> · 21:00</td></tr><tr><td>Day 18</td><td>Thu 30 Jul</td><td><a href="#d18-amalfi1" onclick="jump('d18-amalfi1')">d18-amalfi1</a> · 08:00</td><td><a href="#d18-amalfi2" onclick="jump('d18-amalfi2')">d18-amalfi2</a> · 13:00</td><td><a href="#d18-f3" onclick="jump('d18-f3')">d18-f3</a> · 19:00</td><td><a href="#d18-reel" onclick="jump('d18-reel')">d18-reel</a> · 21:00</td></tr><tr><td>Day 19</td><td>Fri 31 Jul</td><td><a href="#d19-amalfi1" onclick="jump('d19-amalfi1')">d19-amalfi1</a> · 08:00</td><td><a href="#d19-amalfi2" onclick="jump('d19-amalfi2')">d19-amalfi2</a> · 13:00</td><td><a href="#d19-f3" onclick="jump('d19-f3')">d19-f3</a> · 19:00</td><td><a href="#d19-reel" onclick="jump('d19-reel')">d19-reel</a> · 21:00</td></tr><tr><td>Day 20</td><td>Sat 01 Aug</td><td><a href="#d20-amalfi1" onclick="jump('d20-amalfi1')">d20-amalfi1</a> · 08:00</td><td><a href="#d20-amalfi2" onclick="jump('d20-amalfi2')">d20-amalfi2</a> · 13:00</td><td><a href="#d20-f3" onclick="jump('d20-f3')">d20-f3</a> · 19:00</td><td><a href="#d20-reel" onclick="jump('d20-reel')">d20-reel</a> · 21:00</td></tr><tr><td>Day 21</td><td>Sun 02 Aug</td><td><a href="#d21-amalfi1" onclick="jump('d21-amalfi1')">d21-amalfi1</a> · 08:00</td><td><a href="#d21-amalfi2" onclick="jump('d21-amalfi2')">d21-amalfi2</a> · 13:00</td><td><a href="#d21-f3" onclick="jump('d21-f3')">d21-f3</a> · 19:00</td><td><a href="#d21-reel" onclick="jump('d21-reel')">d21-reel</a> · 21:00</td></tr><tr><td>Day 22</td><td>Mon 03 Aug</td><td><a href="#d22-amalfi1" onclick="jump('d22-amalfi1')">d22-amalfi1</a> · 08:00</td><td><a href="#d22-amalfi2" onclick="jump('d22-amalfi2')">d22-amalfi2</a> · 13:00</td><td><a href="#d22-f3" onclick="jump('d22-f3')">d22-f3</a> · 19:00</td><td><a href="#d22-reel" onclick="jump('d22-reel')">d22-reel</a> · 21:00</td></tr><tr><td>Day 23</td><td>Tue 04 Aug</td><td><a href="#d23-amalfi1" onclick="jump('d23-amalfi1')">d23-amalfi1</a> · 08:00</td><td><a href="#d23-amalfi2" onclick="jump('d23-amalfi2')">d23-amalfi2</a> · 13:00</td><td><a href="#d23-f3" onclick="jump('d23-f3')">d23-f3</a> · 19:00</td><td><a href="#d23-reel" onclick="jump('d23-reel')">d23-reel</a> · 21:00</td></tr><tr><td>Day 24</td><td>Wed 05 Aug</td><td><a href="#d24-amalfi1" onclick="jump('d24-amalfi1')">d24-amalfi1</a> · 08:00</td><td><a href="#d24-amalfi2" onclick="jump('d24-amalfi2')">d24-amalfi2</a> · 13:00</td><td><a href="#d24-f3" onclick="jump('d24-f3')">d24-f3</a> · 19:00</td><td><a href="#d24-reel" onclick="jump('d24-reel')">d24-reel</a> · 21:00</td></tr><tr><td>Day 25</td><td>Thu 06 Aug</td><td><a href="#d25-amalfi1" onclick="jump('d25-amalfi1')">d25-amalfi1</a> · 08:00</td><td><a href="#d25-amalfi2" onclick="jump('d25-amalfi2')">d25-amalfi2</a> · 13:00</td><td><a href="#d25-f3" onclick="jump('d25-f3')">d25-f3</a> · 19:00</td><td><a href="#d25-reel" onclick="jump('d25-reel')">d25-reel</a> · 21:00</td></tr><tr><td>Day 26</td><td>Fri 07 Aug</td><td><a href="#d26-amalfi1" onclick="jump('d26-amalfi1')">d26-amalfi1</a> · 08:00</td><td><a href="#d26-amalfi2" onclick="jump('d26-amalfi2')">d26-amalfi2</a> · 13:00</td><td><a href="#d26-f3" onclick="jump('d26-f3')">d26-f3</a> · 19:00</td><td><a href="#d26-reel" onclick="jump('d26-reel')">d26-reel</a> · 21:00</td></tr><tr><td>Day 27</td><td>Sat 08 Aug</td><td><a href="#d27-amalfi1" onclick="jump('d27-amalfi1')">d27-amalfi1</a> · 08:00</td><td><a href="#d27-amalfi2" onclick="jump('d27-amalfi2')">d27-amalfi2</a> · 13:00</td><td><a href="#d27-f3" onclick="jump('d27-f3')">d27-f3</a> · 19:00</td><td><a href="#d27-reel" onclick="jump('d27-reel')">d27-reel</a> · 21:00</td></tr><tr><td>Day 28</td><td>Sun 09 Aug</td><td><a href="#d28-amalfi1" onclick="jump('d28-amalfi1')">d28-amalfi1</a> · 08:00</td><td><a href="#d28-amalfi2" onclick="jump('d28-amalfi2')">d28-amalfi2</a> · 13:00</td><td><a href="#d28-f3" onclick="jump('d28-f3')">d28-f3</a> · 19:00</td><td><a href="#d28-reel" onclick="jump('d28-reel')">d28-reel</a> · 21:00</td></tr><tr><td>Day 29</td><td>Mon 10 Aug</td><td><a href="#d29-amalfi1" onclick="jump('d29-amalfi1')">d29-amalfi1</a> · 08:00</td><td><a href="#d29-amalfi2" onclick="jump('d29-amalfi2')">d29-amalfi2</a> · 13:00</td><td><a href="#d29-f3" onclick="jump('d29-f3')">d29-f3</a> · 19:00</td><td><a href="#d29-reel" onclick="jump('d29-reel')">d29-reel</a> · 21:00</td></tr><tr><td>Day 30</td><td>Tue 11 Aug</td><td><a href="#d30-amalfi1" onclick="jump('d30-amalfi1')">d30-amalfi1</a> · 08:00</td><td><a href="#d30-amalfi2" onclick="jump('d30-amalfi2')">d30-amalfi2</a> · 13:00</td><td><a href="#d30-f3" onclick="jump('d30-f3')">d30-f3</a> · 19:00</td><td><a href="#d30-reel" onclick="jump('d30-reel')">d30-reel</a> · 21:00</td></tr></table></div>
+<h2>Statics &middot; d01-d30 (90)</h2>
+<div class="bar"><button class="f" onclick="flt('ALL')">ALL</button><button class="f" onclick="flt('AMALFI1')">AMALFI 1</button><button class="f" onclick="flt('AMALFI2')">AMALFI 2</button><button class="f" onclick="flt('F3')">F3</button></div><div class="grid" id="statics"><div class="card" data-type="AMALFI1" data-pid="d01-amalfi1" id="d01-amalfi1">
+<img loading="lazy" src="assets/statics/01-amalfi-coastal.jpg" alt="d01-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d01-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-13T08:00:00+06:00">Scheduled</span> <span class="when">Mon 13 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Retro styling. Real range.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d01-amalfi2" id="d01-amalfi2">
+<img loading="lazy" src="assets/statics/02-amalfi-cafe.jpg" alt="d01-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d01-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-13T13:00:00+06:00">Scheduled</span> <span class="when">Mon 13 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Same Amalfi, different light.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d01-f3" id="d01-f3">
+<img loading="lazy" src="assets/statics/03-f3-night.jpg" alt="d01-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d01-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-13T19:00:00+06:00">Scheduled</span> <span class="when">Mon 13 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 doesn&#x27;t wait for daylight.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d02-amalfi1" id="d02-amalfi1">
+<img loading="lazy" src="assets/statics/d02-amalfi1-cafe.jpg" alt="d02-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d02-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-14T08:00:00+06:00">Scheduled</span> <span class="when">Tue 14 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d02-amalfi2" id="d02-amalfi2">
+<img loading="lazy" src="assets/statics/d02-amalfi2-night-city.jpg" alt="d02-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d02-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-14T13:00:00+06:00">Scheduled</span> <span class="when">Tue 14 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Built for the commute and the detour both.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d02-f3" id="d02-f3">
+<img loading="lazy" src="assets/statics/d02-f3-rooftop-sunrise.jpg" alt="d02-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d02-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-14T19:00:00+06:00">Scheduled</span> <span class="when">Tue 14 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sport styling, city-tested power.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d03-amalfi1" id="d03-amalfi1">
+<img loading="lazy" src="assets/statics/d03-amalfi1-night-city.jpg" alt="d03-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d03-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-15T08:00:00+06:00">Scheduled</span> <span class="when">Wed 15 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d03-amalfi2" id="d03-amalfi2">
+<img loading="lazy" src="assets/statics/d03-amalfi2-rooftop-sunrise.jpg" alt="d03-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d03-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-15T13:00:00+06:00">Scheduled</span> <span class="when">Wed 15 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">85-95km on a charge means the ride outlasts the plan.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d03-f3" id="d03-f3">
+<img loading="lazy" src="assets/statics/d03-f3-suburban-morning.jpg" alt="d03-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d03-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-15T19:00:00+06:00">Scheduled</span> <span class="when">Wed 15 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sharp lines. Sharper commute.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d04-amalfi1" id="d04-amalfi1">
+<img loading="lazy" src="assets/statics/d04-amalfi1-rooftop-sunrise.jpg" alt="d04-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d04-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-16T08:00:00+06:00">Scheduled</span> <span class="when">Thu 16 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d04-amalfi2" id="d04-amalfi2">
+<img loading="lazy" src="assets/statics/d04-amalfi2-suburban-morning.jpg" alt="d04-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d04-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-16T13:00:00+06:00">Scheduled</span> <span class="when">Thu 16 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Elegant enough for the evening, tough enough for the commute.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d04-f3" id="d04-f3">
+<img loading="lazy" src="assets/statics/d04-f3-glass-plaza.jpg" alt="d04-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d04-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-16T19:00:00+06:00">Scheduled</span> <span class="when">Thu 16 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Built to move through the city, not around it.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d05-amalfi1" id="d05-amalfi1">
+<img loading="lazy" src="assets/statics/d05-amalfi1-suburban-morning.jpg" alt="d05-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d05-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-17T08:00:00+06:00">Scheduled</span> <span class="when">Fri 17 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d05-amalfi2" id="d05-amalfi2">
+<img loading="lazy" src="assets/statics/d05-amalfi2-glass-plaza.jpg" alt="d05-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d05-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-17T13:00:00+06:00">Scheduled</span> <span class="when">Fri 17 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">The Amalfi doesn&#x27;t do ordinary errands.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d05-f3" id="d05-f3">
+<img loading="lazy" src="assets/statics/d05-f3-riverside-sunset.jpg" alt="d05-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d05-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-17T19:00:00+06:00">Scheduled</span> <span class="when">Fri 17 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 turns heads standing still.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d06-amalfi1" id="d06-amalfi1">
+<img loading="lazy" src="assets/statics/d06-amalfi1-glass-plaza.jpg" alt="d06-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d06-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-18T08:00:00+06:00">Scheduled</span> <span class="when">Sat 18 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d06-amalfi2" id="d06-amalfi2">
+<img loading="lazy" src="assets/statics/d06-amalfi2-riverside-sunset.jpg" alt="d06-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d06-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-18T13:00:00+06:00">Scheduled</span> <span class="when">Sat 18 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Two-tone styling, one very capable ride.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d06-f3" id="d06-f3">
+<img loading="lazy" src="assets/statics/d06-f3-studio-gradient.jpg" alt="d06-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d06-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-18T19:00:00+06:00">Scheduled</span> <span class="when">Sat 18 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Power that looks as good as it rides.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d07-amalfi1" id="d07-amalfi1">
+<img loading="lazy" src="assets/statics/d07-amalfi1-riverside-sunset.jpg" alt="d07-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d07-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-19T08:00:00+06:00">Scheduled</span> <span class="when">Sun 19 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Retro styling. Real range.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d07-amalfi2" id="d07-amalfi2">
+<img loading="lazy" src="assets/statics/d07-amalfi2-studio-gradient.jpg" alt="d07-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d07-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-19T13:00:00+06:00">Scheduled</span> <span class="when">Sun 19 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Same Amalfi, different light.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d07-f3" id="d07-f3">
+<img loading="lazy" src="assets/statics/d07-f3-rain-alley.jpg" alt="d07-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d07-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-19T19:00:00+06:00">Scheduled</span> <span class="when">Sun 19 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 doesn&#x27;t wait for daylight.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d08-amalfi1" id="d08-amalfi1">
+<img loading="lazy" src="assets/statics/d08-amalfi1-studio-gradient.jpg" alt="d08-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d08-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-20T08:00:00+06:00">Scheduled</span> <span class="when">Mon 20 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d08-amalfi2" id="d08-amalfi2">
+<img loading="lazy" src="assets/statics/d08-amalfi2-rain-alley.jpg" alt="d08-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d08-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-20T13:00:00+06:00">Scheduled</span> <span class="when">Mon 20 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Built for the commute and the detour both.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d08-f3" id="d08-f3">
+<img loading="lazy" src="assets/statics/d08-f3-hilltop-dusk.jpg" alt="d08-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d08-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-20T19:00:00+06:00">Scheduled</span> <span class="when">Mon 20 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sport styling, city-tested power.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d09-amalfi1" id="d09-amalfi1">
+<img loading="lazy" src="assets/statics/d09-amalfi1-rain-alley.jpg" alt="d09-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d09-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-21T08:00:00+06:00">Scheduled</span> <span class="when">Tue 21 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d09-amalfi2" id="d09-amalfi2">
+<img loading="lazy" src="assets/statics/d09-amalfi2-hilltop-dusk.jpg" alt="d09-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d09-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-21T13:00:00+06:00">Scheduled</span> <span class="when">Tue 21 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">85-95km on a charge means the ride outlasts the plan.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d09-f3" id="d09-f3">
+<img loading="lazy" src="assets/statics/d09-f3-old-town-square.jpg" alt="d09-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d09-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-21T19:00:00+06:00">Scheduled</span> <span class="when">Tue 21 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sharp lines. Sharper commute.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d10-amalfi1" id="d10-amalfi1">
+<img loading="lazy" src="assets/statics/d10-amalfi1-hilltop-dusk.jpg" alt="d10-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d10-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-22T08:00:00+06:00">Scheduled</span> <span class="when">Wed 22 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d10-amalfi2" id="d10-amalfi2">
+<img loading="lazy" src="assets/statics/d10-amalfi2-old-town-square.jpg" alt="d10-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d10-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-22T13:00:00+06:00">Scheduled</span> <span class="when">Wed 22 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Elegant enough for the evening, tough enough for the commute.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d10-f3" id="d10-f3">
+<img loading="lazy" src="assets/statics/d10-f3-apartment-courtyard.jpg" alt="d10-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d10-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-22T19:00:00+06:00">Scheduled</span> <span class="when">Wed 22 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Built to move through the city, not around it.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d11-amalfi1" id="d11-amalfi1">
+<img loading="lazy" src="assets/statics/d11-amalfi1-old-town-square.jpg" alt="d11-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d11-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-23T08:00:00+06:00">Scheduled</span> <span class="when">Thu 23 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d11-amalfi2" id="d11-amalfi2">
+<img loading="lazy" src="assets/statics/d11-amalfi2-apartment-courtyard.jpg" alt="d11-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d11-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-23T13:00:00+06:00">Scheduled</span> <span class="when">Thu 23 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">The Amalfi doesn&#x27;t do ordinary errands.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d11-f3" id="d11-f3">
+<img loading="lazy" src="assets/statics/d11-f3-beach-boardwalk.jpg" alt="d11-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d11-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-23T19:00:00+06:00">Scheduled</span> <span class="when">Thu 23 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 turns heads standing still.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d12-amalfi1" id="d12-amalfi1">
+<img loading="lazy" src="assets/statics/d12-amalfi1-apartment-courtyard.jpg" alt="d12-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d12-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-24T08:00:00+06:00">Scheduled</span> <span class="when">Fri 24 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d12-amalfi2" id="d12-amalfi2">
+<img loading="lazy" src="assets/statics/d12-amalfi2-beach-boardwalk.jpg" alt="d12-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d12-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-24T13:00:00+06:00">Scheduled</span> <span class="when">Fri 24 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Two-tone styling, one very capable ride.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d12-f3" id="d12-f3">
+<img loading="lazy" src="assets/statics/d12-f3-rooftop-garden.jpg" alt="d12-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d12-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-24T19:00:00+06:00">Scheduled</span> <span class="when">Fri 24 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Power that looks as good as it rides.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d13-amalfi1" id="d13-amalfi1">
+<img loading="lazy" src="assets/statics/d13-amalfi1-beach-boardwalk.jpg" alt="d13-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d13-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-25T08:00:00+06:00">Scheduled</span> <span class="when">Sat 25 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Retro styling. Real range.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d13-amalfi2" id="d13-amalfi2">
+<img loading="lazy" src="assets/statics/d13-amalfi2-rooftop-garden.jpg" alt="d13-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d13-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-25T13:00:00+06:00">Scheduled</span> <span class="when">Sat 25 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Same Amalfi, different light.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d13-f3" id="d13-f3">
+<img loading="lazy" src="assets/statics/d13-f3-neon-market.jpg" alt="d13-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d13-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-25T19:00:00+06:00">Scheduled</span> <span class="when">Sat 25 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 doesn&#x27;t wait for daylight.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d14-amalfi1" id="d14-amalfi1">
+<img loading="lazy" src="assets/statics/d14-amalfi1-rooftop-garden.jpg" alt="d14-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d14-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-26T08:00:00+06:00">Scheduled</span> <span class="when">Sun 26 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d14-amalfi2" id="d14-amalfi2">
+<img loading="lazy" src="assets/statics/d14-amalfi2-neon-market.jpg" alt="d14-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d14-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-26T13:00:00+06:00">Scheduled</span> <span class="when">Sun 26 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Built for the commute and the detour both.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d14-f3" id="d14-f3">
+<img loading="lazy" src="assets/statics/d14-f3-foggy-park.jpg" alt="d14-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d14-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-26T19:00:00+06:00">Scheduled</span> <span class="when">Sun 26 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sport styling, city-tested power.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d15-amalfi1" id="d15-amalfi1">
+<img loading="lazy" src="assets/statics/d15-amalfi1-neon-market.jpg" alt="d15-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d15-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-27T08:00:00+06:00">Scheduled</span> <span class="when">Mon 27 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d15-amalfi2" id="d15-amalfi2">
+<img loading="lazy" src="assets/statics/d15-amalfi2-foggy-park.jpg" alt="d15-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d15-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-27T13:00:00+06:00">Scheduled</span> <span class="when">Mon 27 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">85-95km on a charge means the ride outlasts the plan.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d15-f3" id="d15-f3">
+<img loading="lazy" src="assets/statics/d15-f3-bridge-dusk.jpg" alt="d15-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d15-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-27T19:00:00+06:00">Scheduled</span> <span class="when">Mon 27 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sharp lines. Sharper commute.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d16-amalfi1" id="d16-amalfi1">
+<img loading="lazy" src="assets/statics/d16-amalfi1-foggy-park.jpg" alt="d16-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d16-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-28T08:00:00+06:00">Scheduled</span> <span class="when">Tue 28 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d16-amalfi2" id="d16-amalfi2">
+<img loading="lazy" src="assets/statics/d16-amalfi2-bridge-dusk.jpg" alt="d16-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d16-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-28T13:00:00+06:00">Scheduled</span> <span class="when">Tue 28 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Elegant enough for the evening, tough enough for the commute.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d16-f3" id="d16-f3">
+<img loading="lazy" src="assets/statics/d16-f3-industrial-loft.jpg" alt="d16-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d16-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-28T19:00:00+06:00">Scheduled</span> <span class="when">Tue 28 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Built to move through the city, not around it.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d17-amalfi1" id="d17-amalfi1">
+<img loading="lazy" src="assets/statics/d17-amalfi1-bridge-dusk.jpg" alt="d17-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d17-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-29T08:00:00+06:00">Scheduled</span> <span class="when">Wed 29 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d17-amalfi2" id="d17-amalfi2">
+<img loading="lazy" src="assets/statics/d17-amalfi2-industrial-loft.jpg" alt="d17-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d17-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-29T13:00:00+06:00">Scheduled</span> <span class="when">Wed 29 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">The Amalfi doesn&#x27;t do ordinary errands.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d17-f3" id="d17-f3">
+<img loading="lazy" src="assets/statics/d17-f3-palm-boulevard.jpg" alt="d17-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d17-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-29T19:00:00+06:00">Scheduled</span> <span class="when">Wed 29 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 turns heads standing still.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d18-amalfi1" id="d18-amalfi1">
+<img loading="lazy" src="assets/statics/d18-amalfi1-industrial-loft.jpg" alt="d18-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d18-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-30T08:00:00+06:00">Scheduled</span> <span class="when">Thu 30 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d18-amalfi2" id="d18-amalfi2">
+<img loading="lazy" src="assets/statics/d18-amalfi2-palm-boulevard.jpg" alt="d18-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d18-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-30T13:00:00+06:00">Scheduled</span> <span class="when">Thu 30 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Two-tone styling, one very capable ride.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d18-f3" id="d18-f3">
+<img loading="lazy" src="assets/statics/d18-f3-marina-golden.jpg" alt="d18-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d18-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-30T19:00:00+06:00">Scheduled</span> <span class="when">Thu 30 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Power that looks as good as it rides.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d19-amalfi1" id="d19-amalfi1">
+<img loading="lazy" src="assets/statics/d19-amalfi1-palm-boulevard.jpg" alt="d19-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d19-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-31T08:00:00+06:00">Scheduled</span> <span class="when">Fri 31 Jul · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Retro styling. Real range.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d19-amalfi2" id="d19-amalfi2">
+<img loading="lazy" src="assets/statics/d19-amalfi2-marina-golden.jpg" alt="d19-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d19-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-31T13:00:00+06:00">Scheduled</span> <span class="when">Fri 31 Jul · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Same Amalfi, different light.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d19-f3" id="d19-f3">
+<img loading="lazy" src="assets/statics/d19-f3-crosswalk-dawn.jpg" alt="d19-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d19-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-31T19:00:00+06:00">Scheduled</span> <span class="when">Fri 31 Jul · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 doesn&#x27;t wait for daylight.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d20-amalfi1" id="d20-amalfi1">
+<img loading="lazy" src="assets/statics/d20-amalfi1-marina-golden.jpg" alt="d20-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d20-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-01T08:00:00+06:00">Scheduled</span> <span class="when">Sat 01 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d20-amalfi2" id="d20-amalfi2">
+<img loading="lazy" src="assets/statics/d20-amalfi2-crosswalk-dawn.jpg" alt="d20-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d20-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-01T13:00:00+06:00">Scheduled</span> <span class="when">Sat 01 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Built for the commute and the detour both.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d20-f3" id="d20-f3">
+<img loading="lazy" src="assets/statics/d20-f3-mountain-road.jpg" alt="d20-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d20-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-01T19:00:00+06:00">Scheduled</span> <span class="when">Sat 01 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sport styling, city-tested power.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d21-amalfi1" id="d21-amalfi1">
+<img loading="lazy" src="assets/statics/d21-amalfi1-crosswalk-dawn.jpg" alt="d21-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d21-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-02T08:00:00+06:00">Scheduled</span> <span class="when">Sun 02 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d21-amalfi2" id="d21-amalfi2">
+<img loading="lazy" src="assets/statics/d21-amalfi2-mountain-road.jpg" alt="d21-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d21-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-02T13:00:00+06:00">Scheduled</span> <span class="when">Sun 02 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">85-95km on a charge means the ride outlasts the plan.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d21-f3" id="d21-f3">
+<img loading="lazy" src="assets/statics/d21-f3-blossom-avenue.jpg" alt="d21-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d21-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-02T19:00:00+06:00">Scheduled</span> <span class="when">Sun 02 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sharp lines. Sharper commute.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d22-amalfi1" id="d22-amalfi1">
+<img loading="lazy" src="assets/statics/d22-amalfi1-mountain-road.jpg" alt="d22-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d22-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-03T08:00:00+06:00">Scheduled</span> <span class="when">Mon 03 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d22-amalfi2" id="d22-amalfi2">
+<img loading="lazy" src="assets/statics/d22-amalfi2-blossom-avenue.jpg" alt="d22-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d22-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-03T13:00:00+06:00">Scheduled</span> <span class="when">Mon 03 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Elegant enough for the evening, tough enough for the commute.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d22-f3" id="d22-f3">
+<img loading="lazy" src="assets/statics/d22-f3-parking-garage.jpg" alt="d22-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d22-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-03T19:00:00+06:00">Scheduled</span> <span class="when">Mon 03 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Built to move through the city, not around it.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d23-amalfi1" id="d23-amalfi1">
+<img loading="lazy" src="assets/statics/d23-amalfi1-blossom-avenue.jpg" alt="d23-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d23-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-04T08:00:00+06:00">Scheduled</span> <span class="when">Tue 04 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d23-amalfi2" id="d23-amalfi2">
+<img loading="lazy" src="assets/statics/d23-amalfi2-parking-garage.jpg" alt="d23-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d23-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-04T13:00:00+06:00">Scheduled</span> <span class="when">Tue 04 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">The Amalfi doesn&#x27;t do ordinary errands.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d23-f3" id="d23-f3">
+<img loading="lazy" src="assets/statics/d23-f3-countryside-sunset.jpg" alt="d23-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d23-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-04T19:00:00+06:00">Scheduled</span> <span class="when">Tue 04 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 turns heads standing still.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d24-amalfi1" id="d24-amalfi1">
+<img loading="lazy" src="assets/statics/d24-amalfi1-parking-garage.jpg" alt="d24-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d24-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-05T08:00:00+06:00">Scheduled</span> <span class="when">Wed 05 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d24-amalfi2" id="d24-amalfi2">
+<img loading="lazy" src="assets/statics/d24-amalfi2-countryside-sunset.jpg" alt="d24-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d24-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-05T13:00:00+06:00">Scheduled</span> <span class="when">Wed 05 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Two-tone styling, one very capable ride.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d24-f3" id="d24-f3">
+<img loading="lazy" src="assets/statics/d24-f3-plaza-fountain.jpg" alt="d24-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d24-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-05T19:00:00+06:00">Scheduled</span> <span class="when">Wed 05 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Power that looks as good as it rides.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d25-amalfi1" id="d25-amalfi1">
+<img loading="lazy" src="assets/statics/d25-amalfi1-countryside-sunset.jpg" alt="d25-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d25-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-06T08:00:00+06:00">Scheduled</span> <span class="when">Thu 06 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Retro styling. Real range.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d25-amalfi2" id="d25-amalfi2">
+<img loading="lazy" src="assets/statics/d25-amalfi2-plaza-fountain.jpg" alt="d25-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d25-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-06T13:00:00+06:00">Scheduled</span> <span class="when">Thu 06 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Same Amalfi, different light.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d25-f3" id="d25-f3">
+<img loading="lazy" src="assets/statics/d25-f3-night-forecourt.jpg" alt="d25-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d25-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-06T19:00:00+06:00">Scheduled</span> <span class="when">Thu 06 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 doesn&#x27;t wait for daylight.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d26-amalfi1" id="d26-amalfi1">
+<img loading="lazy" src="assets/statics/d26-amalfi1-plaza-fountain.jpg" alt="d26-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d26-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-07T08:00:00+06:00">Scheduled</span> <span class="when">Fri 07 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d26-amalfi2" id="d26-amalfi2">
+<img loading="lazy" src="assets/statics/d26-amalfi2-night-forecourt.jpg" alt="d26-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d26-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-07T13:00:00+06:00">Scheduled</span> <span class="when">Fri 07 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Built for the commute and the detour both.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d26-f3" id="d26-f3">
+<img loading="lazy" src="assets/statics/d26-f3-overpass-dusk.jpg" alt="d26-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d26-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-07T19:00:00+06:00">Scheduled</span> <span class="when">Fri 07 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sport styling, city-tested power.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d27-amalfi1" id="d27-amalfi1">
+<img loading="lazy" src="assets/statics/d27-amalfi1-night-forecourt.jpg" alt="d27-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d27-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-08T08:00:00+06:00">Scheduled</span> <span class="when">Sat 08 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d27-amalfi2" id="d27-amalfi2">
+<img loading="lazy" src="assets/statics/d27-amalfi2-overpass-dusk.jpg" alt="d27-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d27-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-08T13:00:00+06:00">Scheduled</span> <span class="when">Sat 08 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">85-95km on a charge means the ride outlasts the plan.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d27-f3" id="d27-f3">
+<img loading="lazy" src="assets/statics/d27-f3-lakeside-mist.jpg" alt="d27-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d27-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-08T19:00:00+06:00">Scheduled</span> <span class="when">Sat 08 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Sharp lines. Sharper commute.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d28-amalfi1" id="d28-amalfi1">
+<img loading="lazy" src="assets/statics/d28-amalfi1-overpass-dusk.jpg" alt="d28-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d28-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-09T08:00:00+06:00">Scheduled</span> <span class="when">Sun 09 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d28-amalfi2" id="d28-amalfi2">
+<img loading="lazy" src="assets/statics/d28-amalfi2-lakeside-mist.jpg" alt="d28-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d28-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-09T13:00:00+06:00">Scheduled</span> <span class="when">Sun 09 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Elegant enough for the evening, tough enough for the commute.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d28-f3" id="d28-f3">
+<img loading="lazy" src="assets/statics/d28-f3-white-studio.jpg" alt="d28-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d28-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-09T19:00:00+06:00">Scheduled</span> <span class="when">Sun 09 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Built to move through the city, not around it.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d29-amalfi1" id="d29-amalfi1">
+<img loading="lazy" src="assets/statics/d29-amalfi1-lakeside-mist.jpg" alt="d29-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d29-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-10T08:00:00+06:00">Scheduled</span> <span class="when">Mon 10 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d29-amalfi2" id="d29-amalfi2">
+<img loading="lazy" src="assets/statics/d29-amalfi2-white-studio.jpg" alt="d29-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d29-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-10T13:00:00+06:00">Scheduled</span> <span class="when">Mon 10 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">The Amalfi doesn&#x27;t do ordinary errands.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d29-f3" id="d29-f3">
+<img loading="lazy" src="assets/statics/d29-f3-coastal.jpg" alt="d29-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d29-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-10T19:00:00+06:00">Scheduled</span> <span class="when">Mon 10 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">The F3 turns heads standing still.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div><div class="card" data-type="AMALFI1" data-pid="d30-amalfi1" id="d30-amalfi1">
+<img loading="lazy" src="assets/statics/d30-amalfi1-white-studio.jpg" alt="d30-amalfi1">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d30-amalfi1</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-11T08:00:00+06:00">Scheduled</span> <span class="when">Tue 11 Aug · 08:00 BD · 06:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #ElectricScooter</pre></div><div class="card" data-type="AMALFI2" data-pid="d30-amalfi2" id="d30-amalfi2">
+<img loading="lazy" src="assets/statics/d30-amalfi2-coastal.jpg" alt="d30-amalfi2">
+<div class="meta"><span class="chip">AMALFI</span>
+<span class="id">d30-amalfi2</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-11T13:00:00+06:00">Scheduled</span> <span class="when">Tue 11 Aug · 13:00 BD · 11:00 Gulf</span></div>
+<pre class="cap">Two-tone styling, one very capable ride.
+
+1200W SUNRA Motor · 85-95km range · up to 55km/h
+Your 360° Guardian.
+#SunraEV #SunraBD #Amalfi #RideInStyle</pre></div><div class="card" data-type="F3" data-pid="d30-f3" id="d30-f3">
+<img loading="lazy" src="assets/statics/d30-f3-cafe.jpg" alt="d30-f3">
+<div class="meta"><span class="chip">F3</span>
+<span class="id">d30-f3</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-11T19:00:00+06:00">Scheduled</span> <span class="when">Tue 11 Aug · 19:00 BD · 17:00 Gulf</span></div>
+<pre class="cap">Power that looks as good as it rides.
+
+1000W SUNRA Motor · 90-100km range · up to 56km/h
+Evolve Your Ride.
+#SunraEV #SunraBD #F3 #ElectricScooter</pre></div></div>
+<h2>Reels &middot; d01-d30 (30)</h2>
+<div class="grid" id="videos"><div class="card" data-pid="d01-reel" id="d01-reel">
+<video controls preload="metadata" src="assets/videos/day1-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d01-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-13T21:00:00+06:00">Scheduled</span> <span class="when">Mon 13 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">All three ride different. All three are 100% SUNRA.
+#SunraEV #Amalfi #F3</pre></div><div class="card" data-pid="d02-reel" id="d02-reel">
+<video controls preload="metadata" src="assets/videos/d02-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d02-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-14T21:00:00+06:00">Scheduled</span> <span class="when">Tue 14 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d03-reel" id="d03-reel">
+<video controls preload="metadata" src="assets/videos/d03-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d03-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-15T21:00:00+06:00">Scheduled</span> <span class="when">Wed 15 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d04-reel" id="d04-reel">
+<video controls preload="metadata" src="assets/videos/d04-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d04-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-16T21:00:00+06:00">Scheduled</span> <span class="when">Thu 16 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d05-reel" id="d05-reel">
+<video controls preload="metadata" src="assets/videos/d05-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d05-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-17T21:00:00+06:00">Scheduled</span> <span class="when">Fri 17 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d06-reel" id="d06-reel">
+<video controls preload="metadata" src="assets/videos/d06-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d06-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-18T21:00:00+06:00">Scheduled</span> <span class="when">Sat 18 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d07-reel" id="d07-reel">
+<video controls preload="metadata" src="assets/videos/d07-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d07-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-19T21:00:00+06:00">Scheduled</span> <span class="when">Sun 19 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Retro styling. Real range. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d08-reel" id="d08-reel">
+<video controls preload="metadata" src="assets/videos/d08-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d08-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-20T21:00:00+06:00">Scheduled</span> <span class="when">Mon 20 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d09-reel" id="d09-reel">
+<video controls preload="metadata" src="assets/videos/d09-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d09-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-21T21:00:00+06:00">Scheduled</span> <span class="when">Tue 21 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d10-reel" id="d10-reel">
+<video controls preload="metadata" src="assets/videos/d10-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d10-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-22T21:00:00+06:00">Scheduled</span> <span class="when">Wed 22 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d11-reel" id="d11-reel">
+<video controls preload="metadata" src="assets/videos/d11-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d11-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-23T21:00:00+06:00">Scheduled</span> <span class="when">Thu 23 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d12-reel" id="d12-reel">
+<video controls preload="metadata" src="assets/videos/d12-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d12-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-24T21:00:00+06:00">Scheduled</span> <span class="when">Fri 24 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d13-reel" id="d13-reel">
+<video controls preload="metadata" src="assets/videos/d13-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d13-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-25T21:00:00+06:00">Scheduled</span> <span class="when">Sat 25 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Retro styling. Real range. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d14-reel" id="d14-reel">
+<video controls preload="metadata" src="assets/videos/d14-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d14-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-26T21:00:00+06:00">Scheduled</span> <span class="when">Sun 26 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d15-reel" id="d15-reel">
+<video controls preload="metadata" src="assets/videos/d15-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d15-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-27T21:00:00+06:00">Scheduled</span> <span class="when">Mon 27 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d16-reel" id="d16-reel">
+<video controls preload="metadata" src="assets/videos/d16-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d16-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-28T21:00:00+06:00">Scheduled</span> <span class="when">Tue 28 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d17-reel" id="d17-reel">
+<video controls preload="metadata" src="assets/videos/d17-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d17-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-29T21:00:00+06:00">Scheduled</span> <span class="when">Wed 29 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d18-reel" id="d18-reel">
+<video controls preload="metadata" src="assets/videos/d18-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d18-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-30T21:00:00+06:00">Scheduled</span> <span class="when">Thu 30 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d19-reel" id="d19-reel">
+<video controls preload="metadata" src="assets/videos/d19-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d19-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-07-31T21:00:00+06:00">Scheduled</span> <span class="when">Fri 31 Jul · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Retro styling. Real range. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d20-reel" id="d20-reel">
+<video controls preload="metadata" src="assets/videos/d20-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d20-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-01T21:00:00+06:00">Scheduled</span> <span class="when">Sat 01 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d21-reel" id="d21-reel">
+<video controls preload="metadata" src="assets/videos/d21-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d21-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-02T21:00:00+06:00">Scheduled</span> <span class="when">Sun 02 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d22-reel" id="d22-reel">
+<video controls preload="metadata" src="assets/videos/d22-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d22-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-03T21:00:00+06:00">Scheduled</span> <span class="when">Mon 03 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d23-reel" id="d23-reel">
+<video controls preload="metadata" src="assets/videos/d23-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d23-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-04T21:00:00+06:00">Scheduled</span> <span class="when">Tue 04 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d24-reel" id="d24-reel">
+<video controls preload="metadata" src="assets/videos/d24-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d24-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-05T21:00:00+06:00">Scheduled</span> <span class="when">Wed 05 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d25-reel" id="d25-reel">
+<video controls preload="metadata" src="assets/videos/d25-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d25-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-06T21:00:00+06:00">Scheduled</span> <span class="when">Thu 06 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Retro styling. Real range. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d26-reel" id="d26-reel">
+<video controls preload="metadata" src="assets/videos/d26-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d26-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-07T21:00:00+06:00">Scheduled</span> <span class="when">Fri 07 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Some legends don&#x27;t need to be loud. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d27-reel" id="d27-reel">
+<video controls preload="metadata" src="assets/videos/d27-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d27-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-08T21:00:00+06:00">Scheduled</span> <span class="when">Sat 08 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Classic lines, modern power. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d28-reel" id="d28-reel">
+<video controls preload="metadata" src="assets/videos/d28-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d28-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-09T21:00:00+06:00">Scheduled</span> <span class="when">Sun 09 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">The kind of scooter you don&#x27;t want to trade in. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d29-reel" id="d29-reel">
+<video controls preload="metadata" src="assets/videos/d29-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d29-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-10T21:00:00+06:00">Scheduled</span> <span class="when">Mon 10 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Every ride starts with the Amalfi&#x27;s first turn of the throttle. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div><div class="card" data-pid="d30-reel" id="d30-reel">
+<video controls preload="metadata" src="assets/videos/d30-reel.mp4"></video>
+<div class="meta"><span class="chip">REEL</span>
+<span class="id">d30-reel</span>
+<button class="post" onclick="tg(this)">Posted?</button>
+<button class="copy" onclick="cp(this)">Copy caption</button></div>
+<div class="whenrow"><span class="st" data-due="2026-08-11T21:00:00+06:00">Scheduled</span> <span class="when">Tue 11 Aug · 21:00 BD · 19:00 Gulf</span></div>
+<pre class="cap">Vintage look. Nothing vintage about the performance. Amalfi. F3. One legacy.
+#SunraEV #SunraBD</pre></div></div>
+<footer>sunraevbd.com &middot; Ride the No.1 Legacy</footer>
+<script>
+function cp(btn) {
+  const t = btn.closest('.card').querySelector('.cap').innerText;
+  navigator.clipboard.writeText(t).then(() => {
+    btn.textContent = 'Copied \u2713';
+    setTimeout(() => btn.textContent = 'Copy caption', 1400);
+  });
+}
+function flt(t) {
+  document.querySelectorAll('#statics .card').forEach(c => {
+    c.style.display = (t === 'ALL' || c.dataset.type === t) ? '' : 'none';
+  });
+}
+function tg(btn) {
+  const card = btn.closest('.card'), id = card.dataset.pid;
+  const on = card.classList.toggle('done');
+  localStorage.setItem('sp-' + id, on ? '1' : '');
+  btn.textContent = on ? 'Posted \u2713' : 'Posted?';
+  paint();
+}
+function paint() {
+  let g = 0, y = 0, r = 0;
+  const now = new Date();
+  document.querySelectorAll('.card[data-pid]').forEach(c => {
+    const chip = c.querySelector('.st');
+    if (!chip) return;
+    const pid = c.dataset.pid;
+    if (localStorage.getItem('sp-' + pid)) {
+      chip.className = 'st green'; chip.textContent = 'Posted'; g++;
+    } else if (chip.dataset.due && new Date(chip.dataset.due) < now) {
+      chip.className = 'st red'; chip.textContent = 'Due - not posted'; r++;
+    } else {
+      chip.className = 'st'; chip.textContent = 'Scheduled'; y++;
+    }
+  });
+  document.getElementById('c-green').textContent = g + ' posted';
+  document.getElementById('c-yellow').textContent = y + ' scheduled';
+  document.getElementById('c-red').textContent = r + ' due';
+}
+function jump(id) {
+  const c = document.querySelector('[data-pid="' + id + '"]');
+  if (c) c.scrollIntoView({behavior: 'smooth', block: 'center'});
+}
+document.querySelectorAll('.card[data-pid]').forEach(c => {
+  if (localStorage.getItem('sp-' + c.dataset.pid)) {
+    c.classList.add('done');
+    c.querySelector('.post').textContent = 'Posted \u2713';
+  }
+});
+setInterval(paint, 60000);
+paint();
+</script></body></html>
